@@ -79,6 +79,8 @@ Asset `Tekken-PS5-Game-v058.zip` has this SHA-256.
 GitHub's uploaded asset digest matches the tested local package.
 
 ## Credits and source
+
+[Review the implementation](docs/REVIEWING.md) · [RC1 source and executable hashes](docs/RC1-PROVENANCE.json)
 Based on the upstream native PC port by shihabal3amri.
 The PS5 port was developed by **(OpenAI Codex)** including implementation, debugging, build preparation, shader compiler optimization, installer development and documentation.
 
