@@ -1,0 +1,10 @@
+{
+  "files_scanned": 719,
+  "findings": [],
+  "private_lan_addresses": 0,
+  "personal_home_paths": 0,
+  "credential_patterns": 0,
+  "session_notes": 0,
+  "scope": "Owner-authorized source implementation, including standard /data/ttt2 paths, debug controls, storage/networking code and development comments. Personal paths, LAN addresses and session notes excluded.",
+  "source_manifest_sha256": "d1cec0f6fb5ca6a48b02b4029295ebb18e2f73ebbcececbdb9ff4b4391e0e132"
+}
