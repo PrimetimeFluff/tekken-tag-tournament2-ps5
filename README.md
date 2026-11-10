@@ -78,6 +78,12 @@ Asset `Tekken-PS5-Game-v058.zip` has this SHA-256.
 
 GitHub's uploaded asset digest matches the tested local package.
 
+## Build and review
+
+[Build guide and verification status](docs/BUILDING.md) · [Source review guide](docs/REVIEWING.md)
+
+The build guide distinguishes verified host source tests from PS5 dependency preparation and final packaging. A browsable source snapshot has been prepared, but its bulk upload remains pending approval. RC1 source remains available in the attached release ZIP.
+
 ## Credits and source
 
 [Review the implementation](docs/REVIEWING.md) · [RC1 source and executable hashes](docs/RC1-PROVENANCE.json)
