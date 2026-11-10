@@ -1,79 +1,87 @@
-# Tekken Tag Tournament 2 for PS5 — RC 1.0
+# Tekken Tag Tournament 2 for PS5
 
-An experimental PS5 homebrew port based on
-[shihabal3amri/tekken-tag-tournament-2-pc](https://github.com/shihabal3amri/tekken-tag-tournament-2-pc).
-RC 1.0 uses the tested v058 binary, with internal app version 01.000.058.
+**RC 1.0** brings the native port to PS5 homebrew with automatic installation, on-console shader preparation, controller support and profile renaming through the on-screen keyboard.
 
-[Download RC 1.0](https://github.com/PrimetimeFluff/tekken-tag-tournament2-ps5/releases/tag/RC1)
+[Download RC 1.0](https://github.com/PrimetimeFluff/tekken-tag-tournament2-ps5/releases/tag/RC1) · [Engineering notes](docs/ENGINEERING.md) · [Report an issue](https://github.com/PrimetimeFluff/tekken-tag-tournament2-ps5/issues)
 
-The release asset is `Tekken-PS5-Game-v058.zip`. Its SHA-256 is
+Based on the upstream native PC port by shihabal3amri. [Upstream project](https://github.com/shihabal3amri/tekken-tag-tournament-2-pc)
 
-```text
-6e51c6298ae818cd091c312a6d78920fccce018dfb16eec2ff29bd1af54b51e9
-```
+## Requirements
 
-[Engineering findings and compiler measurements](docs/ENGINEERING.md)
+- A PS5 homebrew environment capable of launching native apps through ShadowMount.
+- Your own supported Xbox 360 Tekken Tag Tournament 2 ISO dump.
+- Title Update 3 matching the supported game version.
+- Available console storage for the ISO, update, extracted game and shader cache.
 
-## Installation
+Testing has covered one homebrew PS5 setup. Compatibility across other firmware versions and game revisions remains to be established.
 
-Use your own supported Xbox 360 game dump and Title Update 3.
-Place the inputs at these exact paths.
+## Install
+
+Place your game dump and update at these exact paths.
 
 ```text
 /data/ttt2/tekken.iso
 /data/ttt2/TU_174Q22P_0000008000000.00000000000O2
 ```
 
-1. Close the running game.
-2. Extract the release ZIP on your computer.
-3. Copy its single PPSA99536 folder into your homebrew directory.
-4. Rescan and install using ShadowMount, then launch Tekken Tag Tournament 2.
-5. Keep the app open while it extracts game data, compiles shaders and saves the cache.
+1. Download and extract `Tekken-PS5-Game-v058.zip`.
+2. Close any running Tekken app.
+3. Copy the package's single `PPSA99536` folder into your homebrew directory. Replace that app folder when updating.
+4. Rescan and install through ShadowMount.
+5. Launch **Tekken Tag Tournament 2** and keep the app open until preparation finishes.
 
-The game launches automatically when preparation completes. Later launches
-validate the installed files and shader cache and skip the preparation screen
-when both are current. Missing or stale shaders trigger preparation again.
-Updates retain saves and settings. A normal app update does not require deleting
-installed game files or shaders.
+The installer extracts game data, applies TU3, prepares shaders on the console and saves the cache. A progress screen shows the current stage, percentage, shader counts and status. The game starts automatically afterward.
 
-## Tested behavior
+Later launches validate the installation and shader cache. A current installation proceeds directly to the game. Preparation returns when required data or shaders are missing or stale.
 
-The tester reported successful matches, app restarts, persistent save data and
-renamed profiles. Controller-driven profile renaming uses the on-screen keyboard.
-The tester also reported v057 ran perfectly and accepted v058 as RC 1.0.
-Testing was performed on one homebrew PS5 environment using ShadowMount.
-Compatibility with additional consoles, firmware versions and game dump variants
-requires further testing. Online functionality has not been qualified for this release.
+## Updating
 
-## Installation and runtime paths
+RC 1.0 uses the tested v058 executable, internal version `01.000.058`, app ID `PPSA99536`.
 
-| Purpose | Path |
+Replace the app folder and rescan ShadowMount. Retain installed game data, shaders, saves and settings. Back up saves before experimenting with installation cleanup.
+
+## Tested features
+
+- Matches against the CPU.
+- App restarts and persistent save data.
+- Profile renaming with the on-screen keyboard.
+- Automatic first-run extraction and shader preparation.
+- Subsequent launches that skip the preparation screen when setup is current.
+
+RC 1.0 is a release candidate. Online features, every game mode, and every fighter/stage combination have yet to receive comprehensive testing. Opening movies, menus and character selection may still exhibit stutter on a fresh setup.
+
+## Performance and first launch
+
+The final compiler benchmark completed in approximately **5 minutes 54 seconds**. That measurement covers compilation into RAM and output verification. A fresh installation additionally extracts game files, saves the cache and starts the renderer.
+
+The runtime uses the v056 compiler, 16 preparation workers and eight cache writers. Rendering warmup uses one worker to reduce startup contention. Compiler indexing changes produced the largest measured improvement. [Measurements and findings](docs/ENGINEERING.md)
+
+## Files and troubleshooting
+
+| Purpose | Console path |
 |---|---|
-| Extracted game | /data/ttt2/installed-game-maxspeed |
-| Compiled shader cache | /data/ttt2/shadercache-maxspeed-v1 |
-| Saves | /data/ttt2/experimental-runtime-maxspeed/saves |
-| Settings | /data/ttt2/experimental-runtime-maxspeed/settings.ini |
-| Runtime log | /data/ttt2/runtime-maxspeed.log |
+| Extracted game | `/data/ttt2/installed-game-maxspeed` |
+| Shader cache | `/data/ttt2/shadercache-maxspeed-v1` |
+| Saves | `/data/ttt2/experimental-runtime-maxspeed/saves` |
+| Settings | `/data/ttt2/experimental-runtime-maxspeed/settings.ini` |
+| Runtime log | `/data/ttt2/runtime-maxspeed.log` |
 
-## Troubleshooting
+For an installation error, retain the displayed message and runtime log before retrying. For a crash or slowdown, report the app version, whether this was a fresh installation, and what was on screen. Include relevant log excerpts after removing personal information.
 
-If installation stops, retain the message and runtime log before retrying.
-For crashes, record what was on screen, the app version, whether this was the
-first launch, and any available kernel fault report.
-For stuttering, report whether it occurs in the opening movie, menus, character
-selection or an active match. Include the runtime log from that session.
-Avoid posting save data or personal network details in public issue reports.
+## Package verification
 
-## Attribution and distribution status
+Asset `Tekken-PS5-Game-v058.zip` has this SHA-256.
 
-The upstream PC port, PS5 payload SDK, graphics stack and shader compiler retain
-their authorship and applicable licenses. Preserve their notices and source
-requirements when distributing binaries. Game artwork and trademarks belong to
-their respective owners.
+```text
+6e51c6298ae818cd091c312a6d78920fccce018dfb16eec2ff29bd1af54b51e9
+```
 
-Publication preparation found no top-level license file in the upstream checkout.
-Confirm the applicable upstream distribution terms and complete a dependency
-license/source inventory before publishing a binary release. Source changes and
-compiler/SDK source archives are included in the existing v058 package, but their
-presence alone does not establish complete license compliance.
+GitHub's uploaded asset digest matches the tested local package.
 
+## Credits and source
+
+Credit belongs to the upstream PC port and the authors of the PS5 homebrew SDK, graphics stack and shader compiler. Game artwork and trademarks belong to their respective owners.
+
+The release package includes the port source patch and compiler/SDK source archives. The repository's automatic source ZIP contains the repository documents. The release asset contains the port materials.
+
+A top-level upstream license was absent in the inspected checkout. Upstream distribution terms and the complete dependency notice/source inventory remain unresolved. Preserve applicable third-party notices and license obligations.
