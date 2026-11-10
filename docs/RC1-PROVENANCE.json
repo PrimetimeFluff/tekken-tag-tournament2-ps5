@@ -1,0 +1,52 @@
+{
+  "release": "RC1",
+  "app_version": "01.000.058",
+  "upstream_repository": "https://github.com/shihabal3amri/tekken-tag-tournament-2-pc",
+  "upstream_commit": "007c523fae876079d74bd9265fb04009e17c6514",
+  "release_asset": "Tekken-PS5-Game-v058.zip",
+  "release_asset_sha256": "6e51c6298ae818cd091c312a6d78920fccce018dfb16eec2ff29bd1af54b51e9",
+  "source_patch_files": 307,
+  "clean_public_rebuild_verified": false,
+  "files": [
+    {
+      "path": "ps5-runtime-components.patch",
+      "bytes": 1173556,
+      "sha256": "9af0866f6d8c7e1762ca49c51f473edfe60f908abf7b9673035c7ec306ab7e1f"
+    },
+    {
+      "path": "lookup-v056.patch",
+      "bytes": 1615,
+      "sha256": "fbda1038b5c58216e8b21b6704bdd06549b51acfb7dcae1ae1a8ab74c960244b"
+    },
+    {
+      "path": "lookup-v056-source.tar.gz",
+      "bytes": 84908,
+      "sha256": "9b2dcd367ea69269f207bcd68e8d5b1f7708e4e1d2c613eb643876693bed405a"
+    },
+    {
+      "path": "sdk-platform-source.tar.gz",
+      "bytes": 187351,
+      "sha256": "f31afa5df0cfc46ce160de29c7621e92eb41f90c2ed72f5c58e890196ac2a112"
+    },
+    {
+      "path": "vkd3d-store-index-source.tar.gz",
+      "bytes": 2088601,
+      "sha256": "f486f3bf0306d2d26935c35118a7676b45c42eedfaeb45b6f151453585a0add1"
+    },
+    {
+      "path": "v058-vs-v057.patch",
+      "bytes": 5316,
+      "sha256": "9a30846d247716c5182efb4cbc12e0fee9a8467cbac803880abe0047e6642bb2"
+    },
+    {
+      "path": "PPSA99536/eboot.bin",
+      "bytes": 236697188,
+      "sha256": "e6a30c41c9ed8cf0704de058fff996f3c12a525065d93757007ef6d25b7788ac"
+    },
+    {
+      "path": "PPSA99536/sce_sys/param.json",
+      "bytes": 859,
+      "sha256": "bbf5d254de1aad1376aca753e6887dd7a2a4146a702c8179714bba5a2157ae99"
+    }
+  ]
+}
