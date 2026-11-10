@@ -80,6 +80,10 @@ GitHub's uploaded asset digest matches the tested local package.
 
 ## Credits and source
 
+The PS5 port was developed collaboratively by **PrimetimeFluff** and **Fred (OpenAI Codex)**. PrimetimeFluff credits Fred with approximately **99% of the hands-on porting work**, including implementation, debugging, build preparation, shader compiler optimization, installer development and documentation. This percentage is the project owner's estimate.
+
+PrimetimeFluff directed the project, provided the hardware and game dumps, performed console testing, reported issues and validated the release. The port builds on the work of the upstream developers and PS5 homebrew community.
+
 Credit belongs to the upstream PC port and the authors of the PS5 homebrew SDK, graphics stack and shader compiler. Game artwork and trademarks belong to their respective owners.
 
 The release package includes the port source patch and compiler/SDK source archives. The repository's automatic source ZIP contains the repository documents. The release asset contains the port materials.
