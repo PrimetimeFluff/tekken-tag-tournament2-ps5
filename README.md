@@ -4,6 +4,16 @@ An experimental PS5 homebrew port based on
 [shihabal3amri/tekken-tag-tournament-2-pc](https://github.com/shihabal3amri/tekken-tag-tournament-2-pc).
 RC 1.0 uses the tested v058 binary, with internal app version 01.000.058.
 
+[Download RC 1.0](https://github.com/PrimetimeFluff/tekken-tag-tournament2-ps5/releases/tag/RC1)
+
+The release asset is `Tekken-PS5-Game-v058.zip`. Its SHA-256 is
+
+```text
+6e51c6298ae818cd091c312a6d78920fccce018dfb16eec2ff29bd1af54b51e9
+```
+
+[Engineering findings and compiler measurements](docs/ENGINEERING.md)
+
 ## Installation
 
 Use your own supported Xbox 360 game dump and Title Update 3.
