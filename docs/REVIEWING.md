@@ -32,6 +32,21 @@ with the patch copied to its parent directory.
 git clone https://github.com/shihabal3amri/tekken-tag-tournament-2-pc.git ttt2-review
 cd ttt2-review
 git checkout 007c523fae876079d74bd9265fb04009e17c6514
+python3 - <<'PY'
+from pathlib import Path
+import subprocess
+for name in subprocess.check_output(["git", "ls-files", "-z"]).split(b"\0"):
+    if not name:
+        continue
+    path = Path(name.decode())
+    raw = path.read_bytes()
+    try:
+        raw.decode("utf-8")
+    except UnicodeError:
+        continue
+    if b"\0" not in raw and b"\r\n" in raw:
+        path.write_bytes(raw.replace(b"\r\n", b"\n"))
+PY
 git apply --stat ../ps5-runtime-components.patch
 git apply --check ../ps5-runtime-components.patch
 git apply ../ps5-runtime-components.patch
@@ -40,7 +55,7 @@ git diff --stat
 
 New files added by a patch are untracked until staged. Inspect them directly or
 use `git status --short` alongside the tracked diff. Review the patch itself to
-see all additions. These commands prepare a source review checkout.
+see all additions. These commands prepare a source review checkout. The normalization step is required because several upstream text files contain CRLF endings and the exported patch uses LF.
 
 ## Areas to inspect
 
@@ -56,6 +71,8 @@ dependencies before executing it. [Recorded performance findings](ENGINEERING.md
 describe benchmark scope and observed results.
 
 ## Build and validation status
+
+See [the build guide](BUILDING.md) for verified fresh-source host checks, pinned dependency references, native component commands and remaining full-build requirements. The browsable snapshot is prepared locally, with its bulk publication pending approval.
 
 Development used WSL Ubuntu, LLVM 18 and the PS5 homebrew payload SDK, with native
 graphics, compiler, media and recompiled CPU archives. The link script refers to
