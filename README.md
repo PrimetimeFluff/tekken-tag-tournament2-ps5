@@ -1,4 +1,5 @@
 # Tekken Tag Tournament 2 for PS5
+[<img src="https://prosperostore.net/press/badge-dark.png" alt="Get it on ProsperoStore" height="56">](https://prosperostore.net/app/PPSA99536/)
 
 **RC 1.0.059 — Native PS5 Homebrew Port**
 
